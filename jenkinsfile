@@ -5,7 +5,7 @@ pipeline{
        jdk 'JDK11'
    }
    stages{
-    stage{
+    stage('compile'){
       steps{
         sh 'mvn compile'
       
