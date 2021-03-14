@@ -1,0 +1,23 @@
+version: "3"
+services:
+  # app:
+  #  build: .
+  #  image: employee-app:1.0
+  mysqldb:
+    image: mysql:8
+    networks:
+      - employee-app-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mindtree
+
+  employee-app:
+    image: employee-app:1.0
+    ports:
+      - "8080:8080"
+    networks:
+      - employee-app-network
+    depends_on:
+      - mysqldb
+networks:
+  employee-app-network:
