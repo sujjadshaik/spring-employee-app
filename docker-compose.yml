@@ -11,12 +11,12 @@ services:
       - employee-app-network
     depends_on:
       - mysqldb
-   mysqldb:
-    image: mysql:8
-    networks:
-      - employee-app-network
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=mindtree
+  mysqldb:
+   image: mysql:8
+   networks:
+     - employee-app-network
+   environment:
+     - MYSQL_ROOT_PASSWORD=root
+     - MYSQL_DATABASE=mindtree
 networks:
   employee-app-network:
