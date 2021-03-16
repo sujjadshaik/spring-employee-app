@@ -1,8 +1,5 @@
 version: "3"
 services:
-  # app:
-  #  build: .
-  #  image: employee-app:1.
   mysqldb:
    image: mysql:8
    networks:
@@ -10,6 +7,8 @@ services:
    environment:
      - MYSQL_ROOT_PASSWORD=root
      - MYSQL_DATABASE=mindtree
+   volumes:
+     - mysql_data:/var/lib/mysql
   employee-app:
     image: employee-app:1.0
     ports:
@@ -23,3 +22,5 @@ services:
       - mysqldb
 networks:
   employee-app-network:
+volumes:
+  mysql_data:
