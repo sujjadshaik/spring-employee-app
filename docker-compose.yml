@@ -7,6 +7,9 @@ services:
     image: employee-app:1.0
     ports:
       - "8080:8080"
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
     networks:
       - employee-app-network
     depends_on:
