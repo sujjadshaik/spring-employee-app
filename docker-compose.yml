@@ -3,6 +3,13 @@ services:
   # app:
   #  build: .
   #  image: employee-app:1.
+  mysqldb:
+   image: mysql:8
+   networks:
+     - employee-app-network
+   environment:
+     - MYSQL_ROOT_PASSWORD=root
+     - MYSQL_DATABASE=mindtree
   employee-app:
     image: employee-app:1.0
     ports:
@@ -14,12 +21,5 @@ services:
       - employee-app-network
     depends_on:
       - mysqldb
-  mysqldb:
-   image: mysql:8
-   networks:
-     - employee-app-network
-   environment:
-     - MYSQL_ROOT_PASSWORD=root
-     - MYSQL_DATABASE=mindtree
 networks:
   employee-app-network:
